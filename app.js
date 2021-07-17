@@ -2,8 +2,9 @@ const express = require("express");
 
 const app = express();
 
-app.use("/msg", (req, res, next) => {
-  res.status(200).json({ msg: "Hello World" });
-});
+//routes
+const User = require("./Api/Routes/User");
+
+app.use("/User", User);
 
 module.exports = app;
