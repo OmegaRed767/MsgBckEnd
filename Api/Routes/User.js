@@ -15,8 +15,13 @@ routes.get("/get/:Id", (req, res, next) => {
 });
 
 routes.post("/post", (req, res, next) => {
+  const info = {
+    email: req.body.email,
+    password: req.body.password,
+  };
   res.status(200).json({
     msg: "Post handeled",
+    info,
   });
 });
 

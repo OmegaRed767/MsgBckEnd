@@ -2,10 +2,21 @@ const express = require("express");
 
 const app = express();
 
-//routes
+const morgan = require("morgan");
+
+const bodyParser = require("body-parser");
+
+const cors = require("cors");
+// routes
 const User = require("./Api/Routes/User");
 const Message = require("./Api/Routes/Message");
-
+// cors
+app.use(cors());
+// logger
+app.use(morgan("dev"));
+//body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use("/User", User);
 app.use("/Message", Message);
 
