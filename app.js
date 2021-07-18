@@ -7,9 +7,26 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
 const cors = require("cors");
+
+const mongoose = require("mongoose");
 // routes
 const User = require("./Api/Routes/User");
 const Message = require("./Api/Routes/Message");
+//connect to db
+mongoose
+  .connect(
+    "mongodb+srv://Pro_duct:anbu2561@cluster0.3jqjn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    console.log("connect to db");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 // cors
 app.use(cors());
 // logger
